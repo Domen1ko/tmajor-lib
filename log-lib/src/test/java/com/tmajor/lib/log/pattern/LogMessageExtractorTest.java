@@ -15,7 +15,6 @@ public class LogMessageExtractorTest {
             .setBusinessId("B1")
             .setApp("TT")
             .setUuid(uuid.toString())
-            .setParams(null)
             .buid();
 
     //_uuid: "a92b686f-194d-4336-9077-fcb80d1687b9" _app: "TEST" _tid: "111" _bid: "be3" _msg: "Test message"

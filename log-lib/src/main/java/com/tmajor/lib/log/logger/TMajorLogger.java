@@ -3,7 +3,6 @@ package com.tmajor.lib.log.logger;
 import com.tmajor.lib.log.model.LogModel;
 
 import javax.validation.constraints.NotNull;
-import java.util.Arrays;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,7 +52,7 @@ public class TMajorLogger {
                 .setBusinessId(businessId)
                 .setApp(app)
                 .setUuid(uuid)
-                .setParams(Arrays.asList(params))
+                .setParams(params)
                 .buid());
         return uuid;
     }
@@ -69,46 +68,134 @@ public class TMajorLogger {
                         .setBusinessId(businessId)
                         .setApp(app)
                         .setUuid(uuid)
-                        .setParams(Arrays.asList(params))
+                        .setParams(params)
                         .buid(),
                 cause);
         return uuid;
     }
 
 
-
+    /**
+     * Log Trace with uuid as result
+     *
+     * @param uuid        - eventual already exist uuid
+     * @param app         - Applciation
+     * @param technicalId - technical id useful for dev team
+     * @param businessId  - business id useful for business team
+     * @param message     - custom dev message
+     * @param params      - Eventuals parameters
+     * @return uuid used into log
+     */
 
     public String uuidTrace(String uuid, String app, String technicalId, String businessId, String message, Object... params) {
         return logUuid(Level.FINEST, uuid, app, technicalId, businessId, message, params);
     }
 
+    /**
+     * Log Trace with uuid as result
+     *
+     * @param uuid        - eventual already exist uuid
+     * @param app         - Applciation
+     * @param technicalId - technical id useful for dev team
+     * @param businessId  - business id useful for business team
+     * @param message     - custom dev message
+     * @param cause       - Exception
+     * @param params      - Eventuals parameters
+     * @return uuid used into log
+     */
     public String uuidTrace(String uuid, String app, String technicalId, String businessId, String message, Throwable cause, Object... params) {
         return logUuid(Level.FINEST, uuid, app, technicalId, businessId, message, cause, params);
     }
 
-
+    /**
+     * Log Debug with uuid as result
+     *
+     * @param uuid        - eventual already exist uuid
+     * @param app         - Applciation
+     * @param technicalId - technical id useful for dev team
+     * @param businessId  - business id useful for business team
+     * @param message     - custom dev message
+     * @param params      - Eventuals parameters
+     * @return uuid used into log
+     */
     public String uuidDebug(String uuid, String app, String technicalId, String businessId, String message, Object... params) {
         return logUuid(Level.WARNING, uuid, app, technicalId, businessId, message, params);
     }
 
+    /**
+     * Log Debug with uuid as result
+     *
+     * @param uuid        - eventual already exist uuid
+     * @param app         - Applciation
+     * @param technicalId - technical id useful for dev team
+     * @param businessId  - business id useful for business team
+     * @param message     - custom dev message
+     * @param cause       - Exception
+     * @param params      - Eventuals parameters
+     * @return uuid used into log
+     */
     public String uuidDebug(String uuid, String app, String technicalId, String businessId, String message, Throwable cause, Object... params) {
         return logUuid(Level.WARNING, uuid, app, technicalId, businessId, message, cause, params);
     }
 
-
+    /**
+     * Log Info with uuid as result
+     *
+     * @param uuid        - eventual already exist uuid
+     * @param app         - Applciation
+     * @param technicalId - technical id useful for dev team
+     * @param businessId  - business id useful for business team
+     * @param message     - custom dev message
+     * @param params      - Eventuals parameters
+     * @return uuid used into log
+     */
     public String uuidInfo(String uuid, String app, String technicalId, String businessId, String message, Object... params) {
         return logUuid(Level.INFO, uuid, app, technicalId, businessId, message, params);
     }
 
+    /**
+     * Log Info with uuid as result
+     *
+     * @param uuid        - eventual already exist uuid
+     * @param app         - Applciation
+     * @param technicalId - technical id useful for dev team
+     * @param businessId  - business id useful for business team
+     * @param message     - custom dev message
+     * @param cause       - Exception
+     * @param params      - Eventuals parameters
+     * @return uuid used into log
+     */
     public String uuidInfo(String uuid, String app, String technicalId, String businessId, String message, Throwable cause, Object... params) {
         return logUuid(Level.INFO, uuid, app, technicalId, businessId, message, cause, params);
     }
 
-
+    /**
+     * Log Error with uuid as result
+     *
+     * @param uuid        - eventual already exist uuid
+     * @param app         - Applciation
+     * @param technicalId - technical id useful for dev team
+     * @param businessId  - business id useful for business team
+     * @param message     - custom dev message
+     * @param params      - Eventuals parameters
+     * @return uuid used into log
+     */
     public String uuidError(String uuid, String app, String technicalId, String businessId, String message, Object... params) {
         return logUuid(Level.SEVERE, uuid, app, technicalId, businessId, message, params);
     }
 
+    /**
+     * Log Error with uuid as result
+     *
+     * @param uuid        - eventual already exist uuid
+     * @param app         - Applciation
+     * @param technicalId - technical id useful for dev team
+     * @param businessId  - business id useful for business team
+     * @param message     - custom dev message
+     * @param cause       - Exception
+     * @param params      - Eventuals parameters
+     * @return uuid used into log
+     */
     public String uuidError(String uuid, String app, String technicalId, String businessId, String message, Throwable cause, Object... params) {
         return logUuid(Level.SEVERE, uuid, app, technicalId, businessId, message, cause, params);
     }
@@ -242,7 +329,7 @@ public class TMajorLogger {
      * @return String builded for logging purpose
      */
     public String log(Level lvl, String uuid, String app, String technicalId, String businessId, String message, Object... params) {
-        if (uuid != null) {
+        if (uuid == null) {
             uuid = UUID.randomUUID().toString();
         }
         return log(lvl, new LogModel.LogModelBuilder()
@@ -251,7 +338,7 @@ public class TMajorLogger {
                 .setBusinessId(businessId)
                 .setApp(app)
                 .setUuid(uuid)
-                .setParams(Arrays.asList(params))
+                .setParams(params)
                 .buid());
     }
 
@@ -331,7 +418,7 @@ public class TMajorLogger {
      * @return String builded for logging purpose
      */
     public String log(Level lvl, String uuid, String app, String technicalId, String businessId, String message, Throwable cause, Object... params) {
-        if (uuid != null) {
+        if (uuid == null) {
             uuid = UUID.randomUUID().toString();
         }
         return log(lvl, new LogModel.LogModelBuilder()
@@ -340,7 +427,7 @@ public class TMajorLogger {
                 .setBusinessId(businessId)
                 .setApp(app)
                 .setUuid(uuid)
-                .setParams(Arrays.asList(params))
+                .setParams(params)
                 .buid(), cause);
     }
 

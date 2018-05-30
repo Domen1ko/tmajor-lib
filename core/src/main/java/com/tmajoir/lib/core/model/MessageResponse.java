@@ -20,7 +20,7 @@ public class MessageResponse {
         this.messages = messages;
     }
 
-    public boolean isError() {
+    public boolean getError() {
         Message first = getMessages().first();
         if (first == null) {
             return false;

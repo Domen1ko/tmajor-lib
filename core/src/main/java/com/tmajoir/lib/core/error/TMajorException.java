@@ -16,7 +16,12 @@ public class TMajorException extends Exception {
     private String uuid, devMessage, code, app;
     private String technicalId, businessId;
 
-
+    /**
+     * Create an exception strating from log message and code
+     *
+     * @param code       - error code
+     * @param logMessage - log message produced by LogPattern
+     */
     public TMajorException(@NotNull String code, @NotNull String logMessage) {
         super(logMessage);
         LogModel logModel = LogMessageExtractor.extractModel(logMessage);
@@ -30,7 +35,7 @@ public class TMajorException extends Exception {
 
 
     /**
-     * Base Exception model
+     * Exception delegate log to exception
      *
      * @param technicalId - technical id useful for dev team
      * @param businessId  - business id useful for business team
@@ -61,6 +66,8 @@ public class TMajorException extends Exception {
         this.devMessage = devMessage;
         this.code = code;
         this.app = app;
+        this.technicalId = technicalId;
+        this.businessId = businessId;
     }
 
     public String getUuid() {

@@ -7,6 +7,8 @@ import static org.junit.Assert.*;
 
 public class MessageResponseTest {
 
+
+
     @Test
     public void messageBuilder() {
         MessageResponse respose = new MessageResponse();

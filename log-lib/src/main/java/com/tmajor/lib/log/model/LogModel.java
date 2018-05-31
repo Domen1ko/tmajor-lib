@@ -2,6 +2,7 @@ package com.tmajor.lib.log.model;
 
 import com.tmajor.lib.log.pattern.LogPattern;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -47,6 +48,24 @@ public class LogModel {
         return params;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LogModel logModel = (LogModel) o;
+        return Objects.equals(getUuid(), logModel.getUuid()) &&
+                Objects.equals(getApp(), logModel.getApp()) &&
+                Objects.equals(getTechnicalId(), logModel.getTechnicalId()) &&
+                Objects.equals(getBusinessId(), logModel.getBusinessId()) &&
+                Objects.equals(getMessage(), logModel.getMessage());
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(getUuid(), getApp(), getTechnicalId(), getBusinessId(), getMessage());
+    }
+
     public static class LogModelBuilder {
         String uuid, app, technicalId, businessId, message;
         List params;
@@ -77,31 +96,15 @@ public class LogModel {
         }
 
 
-        public LogModelBuilder setParams(List params) {
-            this.params = params;
+        public LogModelBuilder setParams(Object... params) {
+            if (params != null && params.length > 0 && Arrays.stream(params).allMatch(Objects::nonNull)) {
+                this.params = Arrays.asList(params);
+            }
             return this;
         }
 
         public LogModel buid() {
             return new LogModel(uuid, app, technicalId, businessId, message, params);
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        LogModel logModel = (LogModel) o;
-        return Objects.equals(getUuid(), logModel.getUuid()) &&
-                Objects.equals(getApp(), logModel.getApp()) &&
-                Objects.equals(getTechnicalId(), logModel.getTechnicalId()) &&
-                Objects.equals(getBusinessId(), logModel.getBusinessId()) &&
-                Objects.equals(getMessage(), logModel.getMessage());
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(getUuid(), getApp(), getTechnicalId(), getBusinessId(), getMessage());
     }
 }

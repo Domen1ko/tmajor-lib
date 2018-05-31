@@ -13,10 +13,22 @@ public class TMajorException extends Exception {
 
 
     @NotNull
-    private String uuid, devMessage, code, app;
-    private String technicalId, businessId;
+    private final String uuid;
+    @NotNull
+    private final String devMessage;
+    @NotNull
+    private final String code;
+    @NotNull
+    private final String app;
+    private final String businessId;
+    private final String technicalId;
 
-
+    /**
+     * Create an exception strating from log message and code
+     *
+     * @param code       - error code
+     * @param logMessage - log message produced by LogPattern
+     */
     public TMajorException(@NotNull String code, @NotNull String logMessage) {
         super(logMessage);
         LogModel logModel = LogMessageExtractor.extractModel(logMessage);
@@ -30,7 +42,7 @@ public class TMajorException extends Exception {
 
 
     /**
-     * Base Exception model
+     * Exception delegate log to exception
      *
      * @param technicalId - technical id useful for dev team
      * @param businessId  - business id useful for business team
@@ -61,53 +73,37 @@ public class TMajorException extends Exception {
         this.devMessage = devMessage;
         this.code = code;
         this.app = app;
+        this.technicalId = technicalId;
+        this.businessId = businessId;
     }
 
     public String getUuid() {
         return uuid;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
 
     public String getDevMessage() {
         return devMessage;
     }
 
-    public void setDevMessage(String devMessage) {
-        this.devMessage = devMessage;
-    }
 
     public String getCode() {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
 
     public String getApp() {
         return app;
     }
 
-    public void setApp(String app) {
-        this.app = app;
-    }
 
     public String getTechnicalId() {
         return technicalId;
     }
 
-    public void setTechnicalId(String technicalId) {
-        this.technicalId = technicalId;
-    }
 
     public String getBusinessId() {
         return businessId;
     }
 
-    public void setBusinessId(String businessId) {
-        this.businessId = businessId;
-    }
 }

@@ -6,9 +6,11 @@ import java.util.TreeSet;
 public class MessageResponse {
 
     private SortedSet<Message> messages;
-    private boolean isError;
 
 
+    /**
+     * @return all messages
+     */
     public SortedSet<Message> getMessages() {
         if (messages == null) {
             messages = new TreeSet<>();
@@ -20,17 +22,13 @@ public class MessageResponse {
         this.messages = messages;
     }
 
-    public boolean isError() {
+    public boolean getError() {
         Message first = getMessages().first();
         if (first == null) {
             return false;
         } else {
             return first.getLevel() == Message.LEVEL.ERROR.getLevelInteger();
         }
-    }
-
-    public void setError(boolean error) {
-        isError = error;
     }
 
     public void addMessage(Message message) {

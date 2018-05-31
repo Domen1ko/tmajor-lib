@@ -8,29 +8,32 @@ import java.util.Objects;
 
 public class Message implements Comparable<Message> {
 
-    private String message, uuid;
+    private String msg;
+    private String uuid;
     @NotNull
     private String code;
     private List<String> params;
     private int level;
 
     public Message() {
-        new Message("Unexpected generic error occurred", ErrorRegistry.GENERIC, LEVEL.ERROR, null);
+        this.code = ErrorRegistry.GENERIC;
+        this.msg = "Unexpected generic error occurred";
+        this.level = LEVEL.ERROR.getLevelInteger();
     }
 
-    public Message(String message, String code, LEVEL level, String uuid) {
-        this.message = message;
+    public Message(String msg, String code, LEVEL level, String uuid) {
+        this.msg = msg;
         this.code = code;
         this.level = level.getLevelInteger();
         this.uuid = uuid;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
     public String getCode() {

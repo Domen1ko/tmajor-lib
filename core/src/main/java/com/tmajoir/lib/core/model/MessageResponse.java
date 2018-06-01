@@ -1,12 +1,16 @@
 package com.tmajoir.lib.core.model;
 
+import java.io.Serializable;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-public class MessageResponse {
+public class MessageResponse implements Serializable {
 
     private SortedSet<Message> messages;
+    private TechnicalDetails technicalDetails;
 
+    public MessageResponse() {
+    }
 
     /**
      * @return all messages
@@ -33,5 +37,13 @@ public class MessageResponse {
 
     public void addMessage(Message message) {
         getMessages().add(message);
+    }
+
+    public TechnicalDetails getTechnicalDetails() {
+        return technicalDetails;
+    }
+
+    public void setTechnicalDetails(TechnicalDetails technicalDetails) {
+        this.technicalDetails = technicalDetails;
     }
 }

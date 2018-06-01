@@ -3,10 +3,11 @@ package com.tmajoir.lib.core.model;
 import com.tmajoir.lib.core.registry.ErrorRegistry;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class Message implements Comparable<Message> {
+public class Message implements Comparable<Message> , Serializable {
 
     private String msg;
     private String uuid;

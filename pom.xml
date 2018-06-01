@@ -11,6 +11,11 @@
         <module>log-lib</module>
         <module>string-lib</module>
         <module>core</module>
+        <module>jaxrs.provider</module>
+        <module>services</module>
+        <module>date-lib</module>
+        <module>properties</module>
+        <module>test-lib</module>
     </modules>
     <packaging>pom</packaging>
     <properties>
@@ -20,10 +25,17 @@
         <string-lib.version>0.0.1</string-lib.version>
         <junit.version>4.12</junit.version>
         <log-lib.version>1.0.0</log-lib.version>
+        <jaxrs.provider.version>1.0.0</jaxrs.provider.version>
+        <core.version>1.0.0</core.version>
+        <javaee-api.version>7.0</javaee-api.version>
+        <date-lib.version>1.0.0</date-lib.version>
+        <properties.version>1.0.0</properties.version>
+        <test-lib.version>1.0.0</test-lib.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Project Libs-->
             <dependency>
                 <groupId>com.tmajor.lib</groupId>
                 <artifactId>string-lib</artifactId>
@@ -35,15 +47,47 @@
                 <version>${log-lib.version}</version>
             </dependency>
             <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>${junit.version}</version>
-                <scope>test</scope>
+                <groupId>com.tmajor.lib</groupId>
+                <artifactId>core</artifactId>
+                <version>${core.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.tmajor.lib</groupId>
+                <artifactId>jaxrs.provider</artifactId>
+                <version>${jaxrs.provider.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tmajor.lib</groupId>
+                <artifactId>date-lib</artifactId>
+                <version>${date-lib.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tmajor.lib</groupId>
+                <artifactId>properties</artifactId>
+                <version>${properties.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.tmajor.lib</groupId>
+                <artifactId>test-lib</artifactId>
+                <version>${test-lib.version}</version>
+            </dependency>
+            <!-- Runtime dependencies -->
             <dependency>
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
                 <version>2.0.1.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>javax</groupId>
+                <artifactId>javaee-api</artifactId>
+                <version>${javaee-api.version}</version>
+            </dependency>
+            <!-- Test -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

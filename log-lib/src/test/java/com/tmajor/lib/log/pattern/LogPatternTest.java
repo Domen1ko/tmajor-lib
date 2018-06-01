@@ -23,4 +23,21 @@ public class LogPatternTest {
         Assert.assertFalse(result.contains(LogTags.PARAMS));
 
     }
+
+    @Test
+    public void applyPattern1() {
+        applyPattern();
+    }
+
+    @Test
+    public void applyPattern2() {
+        applyPattern();
+
+    }
+
+    @Test
+    public void applyPattern3() {
+        applyPattern();
+
+    }
 }

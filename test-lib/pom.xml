@@ -8,30 +8,20 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <version>${test-lib.version}</version>
+    <artifactId>test-lib</artifactId>
 
-    <artifactId>core</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.tmajor.lib</groupId>
-            <artifactId>log-lib</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.tmajor.lib</groupId>
-            <artifactId>string-lib</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.tmajor.lib</groupId>
-            <artifactId>date-lib</artifactId>
-        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.197</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
-
-
 </project>

@@ -2,9 +2,9 @@ package com.tmajoir.lib.core.model;
 
 import com.tmajoir.lib.core.error.Exceptions;
 import com.tmajoir.lib.core.error.TMajorException;
+import com.tmajot.lib.date.DateUtility;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 public class TechnicalDetails implements Serializable {
 
@@ -21,7 +21,7 @@ public class TechnicalDetails implements Serializable {
         tech.setBusinessId(e.getBusinessId());
         tech.setUuid(e.getUuid());
         tech.setTechnicalId(e.getUuid());
-        tech.setEventAt(LocalDateTime.now().toString());
+        tech.setEventAt(DateUtility.now());
         tech.setStackTrace(Exceptions.stackTrace(e));
         return tech;
     }
